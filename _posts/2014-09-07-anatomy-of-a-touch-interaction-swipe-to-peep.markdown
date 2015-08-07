@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Anatomy of a touch interaction: Swipe-to-peep"
-date:   2014-09-07 20:06:51
+date:   2014-09-07
 categories: iOS design
 ---
 You open up your messaging app.
