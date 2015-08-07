@@ -2,10 +2,28 @@
 title: iOS blabla Design blabla Swift
 email: m@itchingpixels.com
 description: > # obviously.
+paginate: 10
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://yourdomain.com" # the base hostname & protocol for your site
+url: "http://itchingpixels.github.io" # the base hostname & protocol for your site
 twitter_username: itchingpixels
 github_username:  itchingpixels
+navigation:
+ - title: Home
+   url: /index.html
+ - title: Me
+   url: /about
+ - title: Twitter
+   url: http://twitter.com/itchingpixels
+
+social:
+   github: itchingpixels
+   twitter: itchingpixels
+   email: mark@itchingpixels.com
+
+google_analytics: "UA-58263416-1"
+permalink: blog/:title/
+highlighter: pygments
+
 
 # Build settings
 markdown: kramdown
