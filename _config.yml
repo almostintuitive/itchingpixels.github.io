@@ -24,6 +24,5 @@ google_analytics: "UA-58263416-1"
 permalink: blog/:title/
 highlighter: pygments
 
-
 # Build settings
 markdown: kramdown
