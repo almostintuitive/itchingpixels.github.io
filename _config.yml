@@ -1,6 +1,6 @@
 # Site settings
 title: iOS blabla Design blabla Swift
-email: m@itchingpixels.com
+email: mark@itchingpixels.com
 description: > # obviously.
 paginate: 10
 baseurl: "" # the subpath of your site, e.g. /blog/

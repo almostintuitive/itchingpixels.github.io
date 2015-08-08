@@ -14,7 +14,7 @@ We got the acceptance notice 9 days before setting off.
 I should have started my UX Design Masters in London in the middle of September.. The whole thing was a big mess!
 
 One month later, we had two prototypes, an<a href="http://planblabs.net" target="_blank"> Estonian company</a>, a seed investment, advice from 30+ mentors and a lot of opportunities.
-In one sentence: it was definitely worth it.<!--more-->
+In one sentence: it was definitely worth it.
 
 But, there were a lot of really unexpected realizations during the time I spent there and these were the most important ones:
 
@@ -22,17 +22,17 @@ But, there were a lot of really unexpected realizations during the time I spent 
 You'll have one person organizing the fund-raising, pitching and networking almost full-time.
 This is a must, and you must plan accordingly. If only two of you are developing, designing and promoting the product, it will be really tough to get anything done during that 3 months period.
 
-{<1>}![this is what you're going to do](/content/images/2014/Aug/illustration1.jpg)
+![this is what you're going to do](/content/images/life-in-a-startup-incubator/illustration1.jpg)
 
 <strong>2.</strong> You're gonna burn the seed money in 3 months and after that you'll have another 2-3 months to survive - because usually that's how long it takes to finalize the second round. If you have a completed product and revenue by that time - you're all set. If not, then you have something to figure out. But you love challenges, right?:)
 
-{<2>}![this is the next step](/content/images/2014/Aug/illustration2.jpg)
+![this is the next step](/content/images/life-in-a-startup-incubator/illustration2.jpg)
 
 <strong>3.</strong> If you average out the advice you get from mentors, you'll end up with the most generic product imaginable.
 There will be a point when you need to start ignoring them and ask why they want you to do - insert whatever advice you got from them -.
 They are mostly making assumptions based on their previous experience that has probably no use at all, as the market changed at least twice since they made their first success.
 
-{<3>}![this is what you're gonna feel after talking to a mentor](/content/images/2014/Aug/illustration3.jpg)
+![this is what you're gonna feel after talking to a mentor](/content/images/life-in-a-startup-incubator/illustration3.jpg)
 
 And of course, no one knows how good luck helped them to succeed, there are too many variables. But, as the mentors you'll meet are highly intelligent, they are the guys who really want to figure it all out. And that could easily result (unintentionally) in bad advice. Your job is to filter those and keep the rest.
 
@@ -42,7 +42,7 @@ And of course, no one knows how good luck helped them to succeed, there are too 
 Believe me, the last thing you want is being embarrassed by "your baby" that you've spent all your time on for months. It requires constant, conscious effort and willpower, something like a diet, or quitting smoking.
 
 
-{<4>}![the lean batman](/content/images/2014/Aug/illustration4.jpg)
+![the lean batman](/content/images/life-in-a-startup-incubator/illustration1.jpg)
 
 
 But seriously, every minute your product stays in “stealth mode” is a minute wasted. Nothing works as you initially imagined, and the sooner you realize it, the better.
