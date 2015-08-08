@@ -20,7 +20,7 @@ social:
    twitter: itchingpixels
    email: mark@itchingpixels.com
 
-google_analytics: "UA-58263416-1"
+google_analytics: "UA-37356372-1"
 permalink: blog/:title/
 highlighter: pygments
 

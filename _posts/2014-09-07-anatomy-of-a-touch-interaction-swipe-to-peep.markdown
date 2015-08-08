@@ -7,7 +7,7 @@ categories: iOS design
 You open up your messaging app.
 Question: Why can’t you just "peep" into the thread by swiping on a conversation cell like this?
 
-![](/_images/swipe-to-peep/1.gif)
+![](../content/images/swipe-to-peep/1.gif)
 
 
 
@@ -21,7 +21,7 @@ Which was clearly not true. Otherwise I would have just abandoned emails. Mailbo
 Okay now I’m curious, let’s have a look at some chat apps.
 You’ve got some arbitrary actions if you swipe on a conversation:
 
-![](/_images/swipe-to-peep/2.png)
+![](../content/images/swipe-to-peep/2.png)
 
 Seems kind of useless, there are other ways to delete a thread if you want to.
 
@@ -32,13 +32,30 @@ Hell yeah!
 For the ones who’re interested in the technical details, we’re creating a UITableViewCell that if you start dragging (just add a UIPanGestureRecognizer), communicates with the main ViewController through a delegate.
 We'll trigger the final transition (full-screen content view) if the drag movement ended on the left side of the screen.
 
-<script src="https://gist.github.com/itchingpixels/0091c5e5d36aff914384.js"></script>
-    
+
+```
+if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+  [self.delegate swipeableCellDidStartSwiping:self];
+} else if (gestureRecognizer.state == UIGestureRecognizerStateChanged) {
+  [self.delegate swipeableCell:self didSwipeWithHorizontalPosition:touchLocation.x progress:progress];
+} else if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+  if (progress >= 0.7) {
+    [self.delegate swipeableCellCompletedSwiping:self];
+  } else {
+    [self.delegate swipeableCellCancelledSwiping:self];
+  }
+}
+```
+
 Now let’s just create a a second view and move it (its left side) along the path you leave with your finger.
 
-<script src="https://gist.github.com/itchingpixels/5a6bbcc9849ae7fce7b4.js"></script>
+```
+- (void)adjustViewBasedOnSwipeProgress:(float)progress {
+    self.postWebView.center = CGPointMake(self.view.center.x+(self.view.bounds.size.width*progress), self.view.center.y);
+}
+```
 
-![](/content/images/2014/Aug/swipetopeep-3.gif)
+![](../content/images/swipe-to-peep/3.gif)
 
 
 Easy.
@@ -48,70 +65,133 @@ This is not exactly how the Mailbox swipe interaction works, but if you just gra
 Okay, I found a problem though:
 If you just swipe on a TableView Cell, it just jumps back, we don't trigger the new screen.
 
-![](/content/images/2014/Aug/swipetopeep-4.gif)
+![](../content/images/swipe-to-peep/4.gif)
 
 
 Solution: Let's check the horizontal velocity (the speed) of the swipe and base the decision also on that:
 
-<script src="https://gist.github.com/itchingpixels/8237d8425fe9e035c928.js"></script>
+```
+ else if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        if (progress >= 0.7 || touchVelocity.x < -300) {
+            [self.delegate swipeableCellCompletedSwiping:self];
+        } else {
+            [self.delegate swipeableCellCancelledSwiping:self];
+        }
+    }
+```
 
 
 Okay, let's come back to this a bit later. What happens with the visual transition? It feels a clunky.
 What if we move the original screen to the left at the same time?
 
-{<5>}![](/content/images/2014/Aug/swipetopeep-5.gif)
+![](../content/images/swipe-to-peep/5.gif)
 
-<script src="https://gist.github.com/itchingpixels/ed89a0e52410da8ea4ae.js"></script>
+```
+- (void)adjustViewBasedOnSwipeProgress:(float)progress {
+    self.tableView.center = CGPointMake(self.view.center.x-(self.view.bounds.size.width*(1-progress)), self.view.center.y);
+    self.postWebView.center = CGPointMake(self.view.center.x+(self.view.bounds.size.width*progress), self.view.center.y);
+}
+```
 
 Cool, makes a bit more sense.
 What if we do a bit of a “parallax” movement with the original screen? Also, fade out the original?
 
-![](/content/images/2014/Aug/swipetopeep-6.gif)
+![](../content/images/swipe-to-peep/6.gif)
 
-<script src="https://gist.github.com/itchingpixels/b55acae4f1aa0bb92bf1.js"></script>
+```
+- (void)adjustViewBasedOnSwipeProgress:(float)progress {
+    self.tableView.alpha = progress;
+    self.tableView.center = CGPointMake(self.view.center.x*progress, self.view.center.y);
+    self.postWebView.center = CGPointMake(self.view.center.x+(self.view.bounds.size.width*progress), self.view.center.y);
+}
+```
+
 
 Okay, fine. But, in general, scrolling on the conversation list is crap. It's a bit hard to illustrate with only a few;), but the "content screen" will suddenly start jumping in when you slightly move to the right:
 
-![](/content/images/2014/Aug/swipetopeep-7.gif)
+![](../content/images/swipe-to-peep/7.gif)
 
 Let’s disable the “swipability” on the cell when the vertical acceleration (scrolling on the table) is larger than the horizontal acceleration (swiping to reveal the content)
 
-![](/content/images/2014/Aug/swipetopeep-8.gif)
+![](../content/images/swipe-to-peep/8.gif)
 
-<script src="https://gist.github.com/itchingpixels/312355bcb6aada3475ae.js"></script>
-
+```
+- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer {
+    if ([gestureRecognizer class] == [UIPanGestureRecognizer class]) {
+        CGPoint velocity = [gestureRecognizer velocityInView:nil];
+        if (fabsf(velocity.x) > fabsf(velocity.y) ) {
+            return YES;
+        }
+        return NO;
+    }
+    return YES;
+}
+```
 
 But now, we have to disable scrolling on the main screen’s tableview, otherwise you’ll get this weird effect:
 
 
 
-![](/content/images/2014/Aug/swipetopeep-9-1.gif)
+![](../content/images/swipe-to-peep/9.gif)
 
-<script src="https://gist.github.com/itchingpixels/06a6a82a4a225748c1a2.js"></script>
+
+```
+- (void)swipeableCell:(SwipeToPeepCell *)cell didSwipeWithHorizontalPosition:(CGFloat)horizontalPosition progress:(float)progress {
+    self.tableView.scrollEnabled = NO;
+    [self adjustViewBasedOnSwipeProgress:(1-progress)];
+}
+```
 
 
 Okay, but you can still scroll to the other direction (right), and have a view popping where your finger is. Really confusing.
 Let’s not do that.
 
-![](/content/images/2014/Aug/swipetopeep-10.gif)
+![](../content/images/swipe-to-peep/10.gif)
 
-<script src="https://gist.github.com/itchingpixels/75685ce5a7cc9f5984d9.js"></script>
+
+```
+if (velocity.x > 0) {
+ 	return NO;
+ }
+```
+
 
 Now that we’re here, we could try out pop by Facebook (an awesome animation framework). It’s awesome, and with [MCAnimate+POP](https://github.com/matthewcheok/POP-MCAnimate), the syntax is as concise as it can get. With one extra keypath addition, you can do fancy stuff!
 Just type in ".spring" before whatever you want to animate.
 
-![](/content/images/2014/Aug/swipetopeep-11.gif)
+![](../content/images/swipe-to-peep/11.gif)
 
-<script src="https://gist.github.com/itchingpixels/579c37decd0e95e54247.js"></script>
+
+```
+- (void)adjustViewBasedOnSwipeProgress:(float)progress {
+    self.tableView.spring.alpha = progress;
+    self.tableView.spring.center = CGPointMake(self.view.center.x*progress, self.view.center.y);
+    self.postWebView.spring.center = CGPointMake(self.view.center.x+(self.view.bounds.size.width*progress), self.view.center.y);
+}
+```
 
 Smooth!
 
 The problem now is that you have no feedback on the cell what you’ve selected...
 Let’s animate the background color of cell you're swiping on in a hacky way!
 
-![](/content/images/2014/Aug/swipetopeep-12.gif)
+![](../content/images/swipe-to-peep/12.gif)
 
-<script src="https://gist.github.com/itchingpixels/8ab9a3fcbc2531803fa3.js"></script>
+
+```
+- (void)changeBackgroundColorBasedOnProgress:(float)progress {
+    self.interactiveBackground.alpha = progress;
+}
+
+
+- (void)didMoveToSuperview {
+    self.interactiveBackground = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width,  self.bounds.size.height)];
+    self.interactiveBackground.backgroundColor = [UIColor flatGrayColor];
+    self.interactiveBackground.alpha = 0;
+    [self insertSubview:self.interactiveBackground atIndex:0];
+}
+```
+
 
 This probably makes more sense without the other animation, that fades out the original view completely. But it's something!
 
@@ -119,7 +199,7 @@ Ready for primetime?
 
 Probably not.
 
-If you're intrigued, download the prototype from [github](http://github.com/itchingpixels/SwipeToPeep) and try it out yourself!
+If you're intrigued, download the prototype from [github](https://github.com/itchingpixels/swipe-to-peep) and try it out yourself!
 
 
 *Don’t ever use any of the hacky solutions I’ve used here in your production code, or Jonathan Ive will come around and redesign your face into an aluminium ball with a blinking light.
