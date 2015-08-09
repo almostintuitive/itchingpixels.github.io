@@ -14,6 +14,7 @@ body {
 	font-family: $serif; 
 	line-height: 1.75;  
 	font-size: 112.5%; // 18px base font size
+	font-weight: 300;
 	color: $black;
 	overflow-x: hidden;
 
@@ -54,6 +55,7 @@ a {
 
 	&:hover {
 		color: darken($link-color, 15%);
+		text-decoration: none !important;
 	}
 }
 
@@ -75,8 +77,8 @@ MENU STYLING
 		li {
 		  width: 100%;
 		  display: block;
-		  background: seagreen;
-		  border-bottom: 2px solid lighten(seagreen, 5%);
+		  background: $primary-color;
+		  border-bottom: 2px solid lighten($primary-color, 5%);
 
 		  a {
 		  	color: white;
@@ -114,7 +116,7 @@ MENU STYLING
   float: right;
   line-height: 2em;
   margin-top: .5em;
-  background-color: seagreen;
+  background-color: $primary-color;
   border-radius: 4px;
   padding: 0 .5em;
   color: white;
@@ -125,7 +127,7 @@ MENU STYLING
 
   &:hover {
   	color: white; 
-  	background-color: darken(seagreen, 10%);
+  	background-color: darken($primary-color, 10%);
   }
 }
 
@@ -168,8 +170,7 @@ HEADER STYLING
 ***************/
 
 .header {
-	background-color: seagreen;
-	background-image: url('../img/touring.jpg');
+	background-color: $primary-color;
 	background-size: cover; 
 	background-position: center center;
 	color: white;
@@ -188,8 +189,7 @@ HEADER STYLING
 		font-size: 1em;
 		line-height: 3em;
 		font-family: $sans-serif;
-		font-weight: 800;
-		text-transform: uppercase;
+		font-weight: 100;
 
 		a {
 			color: white;
@@ -222,7 +222,7 @@ POST STYLING
 			content: "";
 			position: absolute;
 			top: -1.25em;
-			background: seagreen;
+			background: $primary-color;
 			display: block;
 			height: 2px;
 			width: 150px;
@@ -233,7 +233,7 @@ POST STYLING
 			content: "";
 			position: absolute;
 			bottom: -1.25em;
-			background: seagreen;
+			background: $primary-color;
 			display: block;
 			height: 2px;
 			width: 150px;
@@ -375,7 +375,6 @@ FOOTER STYLING
 	padding: 2rem 0;
 
 	.container {
-		border-top: 4px solid darken(white, 15%);
 		padding-top: .5em;
 		@include container(90%);
 	}
