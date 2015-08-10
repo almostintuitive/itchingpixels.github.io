@@ -1,0 +1,52 @@
+---
+layout: post
+title:  "This could be a chat UI"
+date:   2015-08-09
+---
+Have you ever been thinking about this little symbol?
+
+![](/content/images/chat/1.gif)
+
+
+I sometimes do. It gives me that anticipation, that sense of presence, which always makes conversations a lot more enjoyable.
+
+I have a question though.
+
+Why do we have this representation of a conversation as the standard?
+
+![](/content/images/chat/2.png)
+
+This feels like something we inherited from here:
+
+![](/content/images/chat/3.png)
+
+It does seem really useful to see the chronological order of the sentences, I have to admit.
+
+But, what about… when you’re both present?
+
+I feel like, that’s a special case, which can be a lot more… emotional? And also, where non-verbal self-expression can be a priority. I mean, in real life, I don’t have to wait till you finish a sentence to react - I can wave my hands, I can pull a face, I can start shouting.
+
+If I want to represent a real-life, real-time conversation, it would look somewhat similar to this:
+
+What if we dropped the strict chronological order in your favourite messaging app?
+
+Then you could react to a message in an instant...
+
+![](/content/images/chat/4.gif)
+
+*Can you throw it away?*
+
+*Put it upside down?*
+
+*Can I tilt it slightly to make space for a new topic?*
+
+*Can I make the important ones bigger?*
+
+*.. what else could I do?*
+
+
+
+I have a very simple, buggy prototype right now that will enable you to drag messages around:
+[Github](http://github.com/itchingpixels/physics-chat)
+
+Ping me what you’re thinking about on [twitter](http://twitter.com/itchingpixels), 
