@@ -29,11 +29,13 @@ I feel like, that’s a special case, which can be a lot more… emotional? And 
 
 If I want to represent a real-life, real-time conversation, it would look somewhat similar to this:
 
+![http://kanade-chizuru.deviantart.com/art/Typography-of-a-Random-Conversation-267526799](/content/images/chat/4.jpg)
+
 What if we dropped the strict chronological order in your favourite messaging app?
 
 Then you could react to a message in an instant...
 
-![](/content/images/chat/4.gif)
+![](/content/images/chat/5.gif)
 
 *Can you throw it away?*
 
