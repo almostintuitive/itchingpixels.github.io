@@ -37,9 +37,13 @@ Then you could react to a message in an instant...
 
 ![](/content/images/chat/5.gif)
 
-*Can you throw it away?*
+I have a very simple, buggy prototype right now that will enable you to drag messages around:
+[Github](http://github.com/itchingpixels/physics-chat)
 
-*Put it upside down?*
+
+*Can I throw it away?*
+
+*Can I put it upside down?*
 
 *Can I tilt it slightly to make space for a new topic?*
 
@@ -48,10 +52,6 @@ Then you could react to a message in an instant...
 *.. what else could I do?*
 
 
+If anything comes to your mind, ping on [twitter](http://twitter.com/itchingpixels)!
 
-I have a very simple, buggy prototype right now that will enable you to drag messages around:
-[Github](http://github.com/itchingpixels/physics-chat)
-
-This whole ting came out of conversations with [@marblekittykat](https://twitter.com/marblekittykat), [@spacetimetravel](https://twitter.com/spacetimetourist), [@dmvrg](https://twitter.com/dmvrg).
-
-I'd love to have this as a conversation stater. If anything comes to your mind, ping on [twitter](http://twitter.com/itchingpixels)!
+This whole concept came from the long conversations with [@marblekittykat](https://twitter.com/marblekittykat), [@bonsaielectric](https://twitter.com/bonsaielectric), [@dmvrg](https://twitter.com/dmvrg)
