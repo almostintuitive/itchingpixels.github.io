@@ -20,5 +20,3 @@ It’s extra convenient since I don’t ever have to think about whether it is s
 
 
 Also, I hope this will help be more freely discuss my thoughts and ideas, that are obviously wrong anyway.
-
-I hope this works!
