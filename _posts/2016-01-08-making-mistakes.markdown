@@ -19,4 +19,3 @@ So, from now on, my profile will just say that.
 It’s extra convenient since I don’t ever have to think about whether it is still true or not ;).
 
 Also, I hope this will help be more freely discuss my thoughts and ideas, that are obviously wrong anyway.
-.
