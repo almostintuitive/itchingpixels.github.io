@@ -74,4 +74,4 @@ What do you think? Does this make sense?
 I’ll continue later, but if you’re curious, have a look at **[redux](https://github.com/rackt/redux)** and the **[explanation of how it works by its author](https://egghead.io/series/getting-started-with-redux)**.
 
 
-Shout on twitter if you find this horrendous / incorrenct or something you can relate to, I'd love to hear about it.
+Shout on [twitter](https://twitter.com/itchingpixels) if you find this horrendous / incorrenct or something you can relate to, I'd love to hear about it.
