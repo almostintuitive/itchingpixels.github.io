@@ -1,0 +1,189 @@
+---
+layout: post
+title:  "Functional Reactive Intuition"
+date:   2016-01-09
+---
+
+
+So, you’ve heard about reactive programming.
+Then, every time, you have a WTF moment. Like: is this guy really talking about switching on the observable of observables?
+And then you turned away.
+
+That’s all fine, we agree on one thing: people usually try to explain functional programming in a way that only makes sense to people who already know functional programming.
+
+Let me show you something, maybe it can help with your appetite.
+
+Have you heard of pipes? streams? signals? observables?
+Let’s imagine they’re all the same: channels that emit events, over time.
+Like an
+
+And just in this moment, your boss interrupts you.
+She asks you to implement a new feature in the app:
+*“When the user starts simultaneously panning and rotating an object, start a countdown from 3. Stop the timer either when the countdown ends or when the user stops the gestures.”*
+
+This is gonna be a mission critical part of the software. There’s no way you can make a mistake here.
+
+So, as an imperative programmer, you start thinking about what do you need to keep track of in order to implement this:
+So let’s see: *"user starts simultaneously panning and rotating an object"* - okay, I need to store this in a variable.
+I mean, otherwise how else can I check if both of them happening at the same time?
+Also, *“Stop the timer either when the countdown ends”* means I’ll need to keep track of the timer. And also, the number of seconds left.
+So, you get the idea: we’re building a kind-of data structure describing what’s exactly happening at the moment, so we can process it.
+
+
+  {% highlight objc %}
+
+  var panPresent = false
+  var pinchPresent = false
+  var gestureTimer: NSTimer?
+  var secondsLeft = 3
+
+  func handlePan(panGesture: UIPanGestureRecognizer) {
+    if panGesture.state == .Began && self.panPresent == false {
+      self.panPresent = true
+      self.checkIfBothGesturesPresent()
+    } else if panGesture.state == .Ended {
+      self.panPresent = false
+      self.stopTimerIfNeeded()
+    }
+  }
+
+  func handlePinch(pinchGesture: UIPinchGestureRecognizer) {
+    if pinchGesture.state == .Began && self.pinchPresent == false {
+      self.pinchPresent = true
+      self.checkIfBothGesturesPresent()
+    } else if pinchGesture.state == .Ended {
+      self.pinchPresent = false
+      self.stopTimerIfNeeded()
+    }
+  }
+
+  func checkIfBothGesturesPresent() {
+    if self.pinchPresent == true && self.panPresent == true && self.gestureTimer == nil {
+      self.secondsLeft = 3
+      self.gestureTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: “tick:”...
+      print("started")
+    }
+  }
+
+  func stopTimerIfNeeded() {
+    if let gestureTimer = gestureTimer {
+      gestureTimer.invalidate()
+      self.gestureTimer = nil
+      print("completed")
+    }
+  }
+
+  func tick(timer: NSTimer) {
+    if self.secondsLeft <= 0 {
+      self.stopTimerIfNeeded()
+      return
+    }
+    self.secondsLeft--
+    print("tick")
+  }
+  {% endhighlight %}
+
+
+Let’s see what’s going on here:
+
+So, we turn our original sentence into this:
+
+**when the user touches the screen
+  check if a user is panning an object, store that information
+    check if both gestures are running simultaneously, if yes, start a timer, from 3, counting down.
+  check if the user is rotating an object, store that information
+    check if both gestures are running simultaneously, if yes, start a timer, from 3, counting down.
+  check if the user stopped panning
+    stop the timer if needed
+  check if the user stopped rotating
+    stop the timer if needed
+
+when the timer ticks, decrease the number of seconds left
+  if the number of seconds left is zero, stop the timer**
+
+- every time the user touches the screen
+- check if a user is panning an object, store that information
+- - check if both gestures are running simultaneously,  if yes, start a timer, from 3 counting down.
+- - then check if the user is rotating an object, store that information
+- - check if both gestures are running simultaneously,  if yes, start a timer, from 3 counting down.
+- - then check if the user stopped panning
+- - stop the timer if needed
+- - then check if the user stopped rotating
+- - stop the timer if needed
+- -when the timer ticks, decrease the number of seconds left
+- - if the number of seconds left is zero, stop the timer
+
+Ohh my god, it involves having 4 temporarily variables expressing the state of the UI!
+Also, it is nothing like the original English sentence. The logic is buried between if statements, where we set random booleans. The question is: when
+
+Can you spot the difference?
+My take would be: the English sentence uses conditions while the imperative code is using state to express the same thing.
+
+So… what if you could express these conditions in your code?
+Let’s have a look.
+
+class ReactiveViewController: UIViewController {
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    let pan = UIPanGestureRecognizer()
+    pan.delegate = self
+    let pinch = UIPinchGestureRecognizer()
+    pinch.delegate = self
+    view.gestureRecognizers = [pan, pinch]
+
+    // condition: when pan has begun
+    let panStarted = pan.rx_event.filter { gesture in gesture.state == .Began }
+    // condition: when pan has ended
+    let panEnded = pan.rx_event.filter { gesture in gesture.state == .Ended }
+
+    // condition: when pinch has begun
+    let pinchStarted = pinch.rx_event.filter { gesture in gesture.state == .Began }
+    // condition: when pinch has ended
+    let pinchEnded = pinch.rx_event.filter { gesture in gesture.state == .Ended }
+
+    // condition: when both pan and pinch has begun
+    let bothGesturesStarted = Observable.of(panStarted, pinchStarted).merge(maxConcurrent: 1)
+    // condition: when both pan and pinch ended
+    let bothGesturesEnded = Observable.of(panEnded, pinchEnded).merge()
+
+    bothGesturesStarted.subscribeNext { _ in
+
+      // when bothGesturesStarted started, do this:
+      print("started")
+      // create a timer that ticks every second
+      let timer = Observable<Int>.timer(1, period: 1, scheduler: MainScheduler.instance)
+      // condition: but only three ticks
+      let timerThatTicksThree = timer.take(3)
+      // condition: and also, stop it immediately when both pan and pinch ended
+      let timerThatTicksThreeAndStops = timerThatTicksThree.takeUntil(bothGesturesEnded)
+
+      timerThatTicksThreeAndStops.subscribe(onNext: { count in
+        // when a tick happens, do this:
+        print("tick: \(count)")
+      }, onError: nil, onCompleted: {
+        // when the timer completes, do this:
+        print("completed")
+      }, onDisposed: nil)
+    }
+  }
+
+}
+
+voila, all four of the temporary variables are gone!
+also, did you notice, that the code looks like this:
+
+**define what “simultaneously panning and rotating” condition means
+define what “start a countdown from 3” condition means
+define what “when the user stops the gestures” condition means
+define what a timer is
+
+now do this: “When the user starts simultaneously panning and rotating an object, start a countdown from 3. Stop the timer either when the countdown ends or when the user stops the gestures.”**
+
+
+you can also compress the syntax a little:
+
+… or potentially, a lot more, but that’s a different topic!
+
+Let me know what you think! Was this a good example? Does this make sense?
