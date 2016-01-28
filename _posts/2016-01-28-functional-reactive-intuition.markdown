@@ -30,7 +30,7 @@ Also, *“Stop the timer either when the countdown ends”* means I’ll need to
 So, you get the idea: we’re building a kind-of data structure describing what’s exactly happening at the moment, so we can process it.
 
 
-  {% highlight objc %}
+{% highlight objc %}
 
   var panPresent = false
   var pinchPresent = false
@@ -81,7 +81,7 @@ So, you get the idea: we’re building a kind-of data structure describing what�
     self.secondsLeft--
     print("tick")
   }
-  {% endhighlight %}
+{% endhighlight %}
 
 
 Let’s see what’s going on here:
@@ -101,37 +101,21 @@ So, we turn our original sentence into this:
 when the timer ticks, decrease the number of seconds left
   if the number of seconds left is zero, stop the timer**
 
-- every time the user touches the screen
-- check if a user is panning an object, store that information
-- - check if both gestures are running simultaneously,  if yes, start a timer, from 3 counting down.
-- - then check if the user is rotating an object, store that information
-- - check if both gestures are running simultaneously,  if yes, start a timer, from 3 counting down.
-- - then check if the user stopped panning
-- - stop the timer if needed
-- - then check if the user stopped rotating
-- - stop the timer if needed
-- -when the timer ticks, decrease the number of seconds left
-- - if the number of seconds left is zero, stop the timer
-
 Ohh my god, it involves having 4 temporarily variables expressing the state of the UI!
-Also, it is nothing like the original English sentence. The logic is buried between if statements, where we set random booleans. The question is: when
+Also, it is nothing like the original English sentence. The logic is buried between if statements, where we set random booleans. And we jump around like a bugs bunny - there are 5 functions, and we inconsistently jump between one another.
 
-Can you spot the difference?
-My take would be: the English sentence uses conditions while the imperative code is using state to express the same thing.
+So, the question that reactive programming can help you with is:
+How can you replace all those "if" instances with "when"?
 
-So… what if you could express these conditions in your code?
-Let’s have a look.
+Let's have a look!
 
-class ReactiveViewController: UIViewController {
+{% highlight objc %}
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
     let pan = UIPanGestureRecognizer()
-    pan.delegate = self
     let pinch = UIPinchGestureRecognizer()
-    pinch.delegate = self
-    view.gestureRecognizers = [pan, pinch]
 
     // condition: when pan has begun
     let panStarted = pan.rx_event.filter { gesture in gesture.state == .Began }
@@ -168,8 +152,7 @@ class ReactiveViewController: UIViewController {
       }, onDisposed: nil)
     }
   }
-
-}
+{% endhighlight %}
 
 voila, all four of the temporary variables are gone!
 also, did you notice, that the code looks like this:
@@ -181,9 +164,9 @@ define what a timer is
 
 now do this: “When the user starts simultaneously panning and rotating an object, start a countdown from 3. Stop the timer either when the countdown ends or when the user stops the gestures.”**
 
+You can also compress the syntax quite a bit, if you want to see how, [here's the link](https://github.com/itchingpixels/talks/blob/master/functional-reactive-intuition/Project/RFP/ReactiveShortViewController.swift) to the file!
 
-you can also compress the syntax a little:
 
-… or potentially, a lot more, but that’s a different topic!
+Have a look at the example project [here](https://github.com/itchingpixels/talks/tree/master/functional-reactive-intuition/Project) and feel free to play around.
 
-Let me know what you think! Was this a good example? Does this make sense?
+Does this makes sense? [Let me know](https://twitter.com/itchingpixels) what you think!
