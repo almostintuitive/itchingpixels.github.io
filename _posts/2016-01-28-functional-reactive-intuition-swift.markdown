@@ -138,30 +138,66 @@ override func viewDidLoad() {
   let pan = UIPanGestureRecognizer()
   let pinch = UIPinchGestureRecognizer()
 
-  // condition: when pan has begun
+  // Here, we want to create a signal that emits an event when the
+  // gesture has started.
+
+  // We can call .rx_event on UIPangestureRecognizer, and
+  // transform it's output into a signal, which then
+  // We can use filter to discard all other events!
+
   let panStarted = pan.rx_event.filter { gesture in gesture.state == .Began }
-  // condition: when pan has ended
+
+  // We do the same here, but this time we're only interested
+  // when the gestureRecognizer is in the .Ended state.
+
   let panEnded = pan.rx_event.filter { gesture in gesture.state == .Ended }
 
-  // condition: when pinch has begun
   let pinchStarted = pinch.rx_event.filter { gesture in gesture.state == .Began }
-  // condition: when pinch has ended
   let pinchEnded = pinch.rx_event.filter { gesture in gesture.state == .Ended }
 
-  // condition: when both pan and pinch has begun
-  let bothGesturesStarted = Observable.of(panStarted, pinchStarted).merge(maxConcurrent: 1)
-  // condition: when both pan and pinch ended
+  // Okay, let's think. Our aim is to only trigger the timer when both
+  // gestures began. WE originally had to keep track of these states ourselves,
+  // but now that we transformed them into signals, we can also merge them, same
+  // way as you'd merge two arrays into one!
+  // merge() will create a new signal that'll only start when both panStarted
+  // and pinchStarted emitted an event!
+
+  let bothGesturesStarted = Observable.of(panStarted, pinchStarted).merge()
+
   let bothGesturesEnded = Observable.of(panEnded, pinchEnded).merge()
+
+  // Now that we have our starting point, what should we do?
+  // Signals are special beasts: you can subscribe to them. Same way as
+  // you'd subscribe to a notification through NSNotificationCenter.
+  // subscribeNext will take a closure (block), and every time the signal
+  // fires, it'll run the signal's emitted value through the block!
 
   bothGesturesStarted.subscribeNext { _ in
 
-    // when bothGesturesStarted started, do this:
+    // So, when bothGesturesStarted started, do this:
     print("started")
-    // create a timer that ticks every second
+
+    // Now we need to create a timer. Rx is a quite comprehensive library,
+    // it has some really handy structures and extensions - one of them is
+    // exactly a timer.
+    // What do we want? If we don't want to keep track of any more state,
+    // we can just create a signal that emits a number (Int), and increase it
+    // on every 'tick'.
+
     let timer = Observable<Int>.timer(1, period: 1, scheduler: MainScheduler.instance)
-    // condition: but only three ticks
+
+    // But wait, we don't want this timer to go on indefinitely!
+    // Hmm, actually this is quite easy. Rx will also provide you operations
+    // where you can limit the lifetime of a signal.
+    // Same way as you'd take only the first 3 items in the array, you can
+    // use take(x) to only take the first x events (values) from a signal.
+
     let timerThatTicksThree = timer.take(3)
-    // condition: and also, stop it immediately when both pan and pinch ended
+
+    // And finally, we can also combine signals in other ways: this time,
+    // we need to stop the timer signal when another signal is fired.
+    // Here, we just use takeUntil! It's like the "while" loop of signals.
+
     let timerThatTicksThreeAndStops = timerThatTicksThree.takeUntil(bothGesturesEnded)
 
     timerThatTicksThreeAndStops.subscribe(onNext: { count in
@@ -176,8 +212,8 @@ override func viewDidLoad() {
 
 {% endhighlight %}
 
-voila, all four of the temporary variables are gone!
-also, did you notice, that the code looks like this:
+And now, voila, all four of the temporary variables are gone!
+Also, did you notice, that the code looks like this:
 
 {% highlight swift %}
 
