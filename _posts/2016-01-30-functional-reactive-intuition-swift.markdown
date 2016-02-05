@@ -153,13 +153,17 @@ let pinchStarted = pinch.rx_event.filter { gesture in gesture.state == .Began }
 let pinchEnded = pinch.rx_event.filter { gesture in gesture.state == .Ended }
 
 // Okay, let's think. Our aim is to only trigger the timer when both
-// gestures began. WE originally had to keep track of these states ourselves,
+// gestures began. We originally had to keep track of these states ourselves,
 // but now that we transformed them into signals, we can also merge them, same
 // way as you'd merge two arrays into one!
-// merge() will create a new signal that'll only start when both panStarted
-// and pinchStarted emitted an event!
+// Well, not exactly, we need a special combination, where the new signal will only
+// start when both of its sub-signals have emitted an event: that's combineLatest().
 
-let bothGesturesStarted = Observable.of(panStarted, pinchStarted).merge()
+let bothGesturesStarted = Observable.combineLatest(panStarted, pinchStarted) { (_, _) -> Bool in return true }
+
+// For gestures ended, we need merge(), since we don't need to wait until both of
+// them has started, we can immediately forward events from both channels into
+// the combined one.
 
 let bothGesturesEnded = Observable.of(panEnded, pinchEnded).merge()
 
