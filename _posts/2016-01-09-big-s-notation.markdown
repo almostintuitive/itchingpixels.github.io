@@ -1,9 +1,13 @@
 ---
 layout: post
-title:  "Big S(tate) notation"
-date:   2016-01-09
+title: Big S(tate) notation
+date: {}
+published: true
 ---
 
+_This is an early and somewhat funny/incomprehendible post I wrote a long time ago about stateless / stateful components (not in a React, sense, but more in an OOP, object-sense)._
+
+-----
 
 There’s something that bothers me a little bit:
 
