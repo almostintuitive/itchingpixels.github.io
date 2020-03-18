@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Big S(tate) notation
-date: {}
+date: 2016-01-09T00:00:00.000Z
 published: true
 ---
 
