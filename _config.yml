@@ -22,7 +22,7 @@ social:
 
 google_analytics: "UA-37356372-1"
 permalink: blog/:title/
-highlighter: pygments
+highlighter: rouge
 
 # Build settings
 markdown: kramdown
