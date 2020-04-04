@@ -28,4 +28,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: master 
+          cname: itchingpixels.com 
           publish_dir: ./public
