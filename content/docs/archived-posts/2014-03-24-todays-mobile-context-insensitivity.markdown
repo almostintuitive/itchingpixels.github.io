@@ -1,8 +1,11 @@
 ---
 layout: post
-title:  "Today’s mobile context-insensitivity"
+title:  "2014 - Today’s mobile context-insensitivity"
 date:   2014-03-25
 ---
+
+# Today’s mobile context-insensitivity
+
 > The supercomputers we’re carrying around don’t know what we are doing and what we are up to — and that’s a problem. 
 
 

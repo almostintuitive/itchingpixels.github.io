@@ -1,9 +1,10 @@
 ---
 layout: post
-title: Big S(tate) notation
-date: 2016-01-09T00:00:00.000Z
-published: true
+title: "2016 - Big S(tate) notation"
+date: 2016-01-09
 ---
+
+# Big S(tate) notation
 
 _This is an early and somewhat funny/incomprehendible post I wrote a long time ago about stateless / stateful components (not in a React, sense, but more in an OOP, object-sense)._
 

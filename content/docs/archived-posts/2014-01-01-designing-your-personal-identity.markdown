@@ -1,8 +1,11 @@
 ---
 layout: post
-title:  "Designing your personal identity"
+title:  "2014 - Designing your personal identity"
 date:   2013-01-01
 ---
+
+# Designing your personal identity
+
 So you are a graphic designer and you think you need a personal identity - not necessarily to show off your skills, but because you need to have one.
 And designing it can cause a lot of problems. I, myself can't even count the hours I wasted on experimenting with my own personal identity - and still, it's in "beta" at best.
 

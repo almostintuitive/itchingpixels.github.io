@@ -1,8 +1,10 @@
 ---
 layout: post
-title:  "Post-text messaging?"
+title:  "2015 - Post-text messaging?"
 date:   2015-08-09
 ---
+
+# Post-text messaging?
 
 Have you ever been thinking about this little symbol?
 

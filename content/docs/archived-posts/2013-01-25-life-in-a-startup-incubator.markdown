@@ -1,8 +1,11 @@
 ---
 layout: post
-title:  "Life in a startup incubator"
+title:  "2013 - Life in a startup incubator"
 date:   2013-01-25
 ---
+
+# Life in a startup incubator
+
 (I wish I had read this blogpost before I’ve got into one;)
 
 Now there are so many chances to travel, form a company and spend a 3-month period somewhere in the world - more than 300 tech-only startup incubators <a href="https://angel.co/incubators" target="_blank">exist</a> at the moment.

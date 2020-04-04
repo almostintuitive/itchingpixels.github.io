@@ -1,9 +1,10 @@
 ---
 layout: post
-title:  "Functional Reactive Intuition - Swift edition"
+title:  "2016 - Functional Reactive Intuition - Swift edition"
 date:   2016-01-30
 ---
 
+# Functional Reactive Intuition - Swift edition
 
 So, you’ve heard about reactive programming.
 Then you got discouraged, almost immediately.

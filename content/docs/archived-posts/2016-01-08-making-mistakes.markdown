@@ -1,8 +1,10 @@
 ---
 layout: post
-title:  "Making mistakes"
+title:  "2016 - Making mistakes"
 date:   2016-01-08
 ---
+
+# Making mistakes
 
 For a long time, my profile said “I make complex simple”.
 

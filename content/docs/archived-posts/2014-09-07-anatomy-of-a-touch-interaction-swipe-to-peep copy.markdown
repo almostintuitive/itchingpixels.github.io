@@ -1,9 +1,12 @@
 ---
 layout: post
-title:  "Anatomy of a touch interaction: Swipe-to-peep"
+title:  "2014 - Anatomy of a touch interaction: Swipe-to-peep"
 date:   2014-09-07
 categories: iOS design
 ---
+
+# Anatomy of a touch interaction: Swipe-to-peep
+
 You open up your messaging app.
 Question: Why can’t you just "peep" into the thread by swiping on a conversation cell like this?
 
