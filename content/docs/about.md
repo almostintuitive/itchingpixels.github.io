@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Me
-permalink: /about/
 ---
 
 If we were to meet in person, I'd be more like: [what do you do?](mailto:mark.szulyovszky@gmail.com)
