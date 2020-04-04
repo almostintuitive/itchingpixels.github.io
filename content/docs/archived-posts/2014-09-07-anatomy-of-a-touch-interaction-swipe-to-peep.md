@@ -10,7 +10,7 @@ categories: iOS design
 You open up your messaging app.
 Question: Why can’t you just "peep" into the thread by swiping on a conversation cell like this?
 
-![](/content/images/swipe-to-peep/1.gif)
+![](../images/swipe-to-peep/1.gif)
 
 
 
@@ -24,7 +24,7 @@ Which was clearly not true. Otherwise I would have just abandoned emails. Mailbo
 Okay now I’m curious, let’s have a look at some chat apps.
 You’ve got some arbitrary actions if you swipe on a conversation:
 
-![](/content/images/swipe-to-peep/2.png)
+![](../images/swipe-to-peep/2.png)
 
 Seems kind of useless, there are other ways to delete a thread if you want to.
 
@@ -58,7 +58,7 @@ Now let’s just create a a second view and move it (its left side) along the pa
 }
 {% endhighlight %}
 
-![](/content/images/swipe-to-peep/3.gif)
+![](../images/swipe-to-peep/3.gif)
 
 
 Easy.
@@ -68,7 +68,7 @@ This is not exactly how the Mailbox swipe interaction works, but if you just gra
 Okay, I found a problem though:
 If you just swipe on a TableView Cell, it just jumps back, we don't trigger the new screen.
 
-![](/content/images/swipe-to-peep/4.gif)
+![](../images/swipe-to-peep/4.gif)
 
 
 Solution: Let's check the horizontal velocity (the speed) of the swipe and base the decision also on that:
@@ -87,7 +87,7 @@ Solution: Let's check the horizontal velocity (the speed) of the swipe and base 
 Okay, let's come back to this a bit later. What happens with the visual transition? It feels a clunky.
 What if we move the original screen to the left at the same time?
 
-![](/content/images/swipe-to-peep/5.gif)
+![](../images/swipe-to-peep/5.gif)
 
 {% highlight objc %}
 - (void)adjustViewBasedOnSwipeProgress:(float)progress {
@@ -99,7 +99,7 @@ What if we move the original screen to the left at the same time?
 Cool, makes a bit more sense.
 What if we do a bit of a “parallax” movement with the original screen? Also, fade out the original?
 
-![](/content/images/swipe-to-peep/6.gif)
+![](../images/swipe-to-peep/6.gif)
 
 {% highlight objc %}
 - (void)adjustViewBasedOnSwipeProgress:(float)progress {
@@ -112,11 +112,11 @@ What if we do a bit of a “parallax” movement with the original screen? Also,
 
 Okay, fine. But, in general, scrolling on the conversation list is crap. It's a bit hard to illustrate with only a few;), but the "content screen" will suddenly start jumping in when you slightly move to the right:
 
-![](/content/images/swipe-to-peep/7.gif)
+![](../images/swipe-to-peep/7.gif)
 
 Let’s disable the “swipability” on the cell when the vertical acceleration (scrolling on the table) is larger than the horizontal acceleration (swiping to reveal the content)
 
-![](/content/images/swipe-to-peep/8.gif)
+![](../images/swipe-to-peep/8.gif)
 
 {% highlight objc %}
 - (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer {
@@ -135,7 +135,7 @@ But now, we have to disable scrolling on the main screen’s tableview, otherwis
 
 
 
-![](/content/images/swipe-to-peep/9.gif)
+![](../images/swipe-to-peep/9.gif)
 
 
 {% highlight objc %}
@@ -149,7 +149,7 @@ But now, we have to disable scrolling on the main screen’s tableview, otherwis
 Okay, but you can still scroll to the other direction (right), and have a view popping where your finger is. Really confusing.
 Let’s not do that.
 
-![](/content/images/swipe-to-peep/10.gif)
+![](../images/swipe-to-peep/10.gif)
 
 
 {% highlight objc %}
@@ -162,7 +162,7 @@ if (velocity.x > 0) {
 Now that we’re here, we could try out pop by Facebook (an awesome animation framework). It’s awesome, and with [MCAnimate+POP](https://github.com/matthewcheok/POP-MCAnimate), the syntax is as concise as it can get. With one extra keypath addition, you can do fancy stuff!
 Just type in ".spring" before whatever you want to animate.
 
-![](/content/images/swipe-to-peep/11.gif)
+![](../images/swipe-to-peep/11.gif)
 
 
 {% highlight objc %}
@@ -178,7 +178,7 @@ Smooth!
 The problem now is that you have no feedback on the cell what you’ve selected...
 Let’s animate the background color of cell you're swiping on in a hacky way!
 
-![](/content/images/swipe-to-peep/12.gif)
+![](../images/swipe-to-peep/12.gif)
 
 
 {% highlight objc %}
