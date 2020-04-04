@@ -4,7 +4,7 @@ That’s all fine, we agree on one thing: people usually try to explain function
 Let me show you something, maybe it can help with your appetite."><meta property="og:title" content="2016 - Functional Reactive Intuition - Swift edition"><meta property="og:description" content="Functional Reactive Intuition - Swift edition So, you’ve heard about reactive programming. Then you got discouraged, almost immediately.
 Like: is this guy really talking about switching on the observable of observables? I have no idea what&rsquo;s going on.
 That’s all fine, we agree on one thing: people usually try to explain functional programming in a way that only makes sense to people who already know functional programming.
-Let me show you something, maybe it can help with your appetite."><meta property="og:type" content="article"><meta property="og:url" content="https://itchingpixels.com/docs/archived-posts/2016-01-30-functional-reactive-intuition-swift/"><meta property="article:published_time" content="2016-01-30T00:00:00+00:00"><meta property="article:modified_time" content="2020-04-04T15:01:40+02:00"><title>2016 - Functional Reactive Intuition - Swift edition | Mark Aron Szulyovszky</title><link rel=icon href=/favicon.png type=image/x-icon><link rel=stylesheet href=/book.min.63eb88daa545365405ecdbb21033286a325c60a36cfa6d22d21e7c3bc9286941.css integrity="sha256-Y+uI2qVFNlQF7NuyEDMoajJcYKNs+m0i0h58O8koaUE="><script defer src=/en.search.min.d1d6b6ed14f68a324e0e85b83eb638035f085b62ab3b093943ad13c8b1fe2dc4.js integrity="sha256-0da27RT2ijJODoW4PrY4A18IW2KrOwk5Q60TyLH+LcQ="></script></head><body><input type=checkbox class=hidden id=menu-control><main class="container flex"><aside class=book-menu><nav><h2 class=book-brand><a href=/><span>Mark Aron Szulyovszky</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><a href=/docs/archived-posts/ class=collapsed>Archived posts</a><ul><li><a href=/docs/archived-posts/2016-01-30-functional-reactive-intuition-swift/ class=active>2016 - Functional Reactive Intuition - Swift edition</a></li><li><a href=/docs/archived-posts/2016-01-09-big-s-notation/>2016 - Big S(tate) notation</a></li><li><a href=/docs/archived-posts/2016-01-08-making-mistakes/>2016 - Making mistakes</a></li><li><a href=/docs/archived-posts/2015-08-09-post-text-messaging/>2015 - Post-text messaging?</a></li><li><a href=/docs/archived-posts/2014-09-07-anatomy-of-a-touch-interaction-swipe-to-peep/>2014 - Anatomy of a touch interaction: Swipe-to-peep</a></li><li><a href=/docs/archived-posts/2014-03-24-todays-mobile-context-insensitivity/>2014 - Today’s mobile context-insensitivity</a></li><li><a href=/docs/archived-posts/2013-01-25-life-in-a-startup-incubator/>2013 - Life in a startup incubator</a></li><li><a href=/docs/archived-posts/2014-01-01-designing-your-personal-identity/>2014 - Designing your personal identity</a></li></ul></li><li><a href=/docs/about/>Me</a></li></ul></nav><script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label>
+Let me show you something, maybe it can help with your appetite."><meta property="og:type" content="article"><meta property="og:url" content="https://itchingpixels.com/docs/archived-posts/2016-01-30-functional-reactive-intuition-swift/"><meta property="article:published_time" content="2016-01-30T00:00:00+00:00"><meta property="article:modified_time" content="2020-04-04T16:23:37+02:00"><title>2016 - Functional Reactive Intuition - Swift edition | Mark Aron Szulyovszky</title><link rel=icon href=/favicon.png type=image/x-icon><link rel=stylesheet href=/book.min.63eb88daa545365405ecdbb21033286a325c60a36cfa6d22d21e7c3bc9286941.css integrity="sha256-Y+uI2qVFNlQF7NuyEDMoajJcYKNs+m0i0h58O8koaUE="><script defer src=/en.search.min.37e11b0839b0ad6b7dd760f16feb503533857baac1d54ebfdc941dc33d62695f.js integrity="sha256-N+EbCDmwrWt912Dxb+tQNTOFe6rB1U6/3JQdwz1iaV8="></script></head><body><input type=checkbox class=hidden id=menu-control><main class="container flex"><aside class=book-menu><nav><h2 class=book-brand><a href=/><span>Mark Aron Szulyovszky</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><a href=/docs/archived-posts/ class=collapsed>Archived posts</a><ul><li><a href=/docs/archived-posts/2016-01-30-functional-reactive-intuition-swift/ class=active>2016 - Functional Reactive Intuition - Swift edition</a></li><li><a href=/docs/archived-posts/2016-01-09-big-s-notation/>2016 - Big S(tate) notation</a></li><li><a href=/docs/archived-posts/2016-01-08-making-mistakes/>2016 - Making mistakes</a></li><li><a href=/docs/archived-posts/2015-08-09-post-text-messaging/>2015 - Post-text messaging?</a></li><li><a href=/docs/archived-posts/2014-09-07-anatomy-of-a-touch-interaction-swipe-to-peep/>2014 - Anatomy of a touch interaction: Swipe-to-peep</a></li><li><a href=/docs/archived-posts/2014-03-24-todays-mobile-context-insensitivity/>2014 - Today’s mobile context-insensitivity</a></li><li><a href=/docs/archived-posts/2013-01-25-life-in-a-startup-incubator/>2013 - Life in a startup incubator</a></li><li><a href=/docs/archived-posts/2014-01-01-designing-your-personal-identity/>2014 - Designing your personal identity</a></li></ul></li><li><a href=/docs/about/>Me</a></li></ul></nav><script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label>
 <strong>2016 - Functional Reactive Intuition - Swift edition</strong>
 <label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div></header><article class=markdown><h1 id=functional-reactive-intuition---swift-edition>Functional Reactive Intuition - Swift edition</h1><p>So, you’ve heard about reactive programming.
 Then you got discouraged, almost immediately.</p><p>Like: is this guy really talking about switching on the observable of observables? I have no idea what&rsquo;s going on.</p><p>That’s all fine, we agree on one thing: people usually try to explain functional programming in a way that only makes sense to people who <em>already know functional</em> programming.</p><p>Let me show you something, maybe it can help with your appetite.</p><p>Have you heard of pipes? streams? signals? observables? eventemitters?
@@ -12,86 +12,154 @@ Let’s imagine they’re all the same: channels that emit events, over time.</p
 She asks you to implement a new feature in the app. She gives you this brief:</p><h3 id=when-the-user-starts-simultaneously-panning-and-rotating-an-object-start-a-countdown-from-3-stop-the-timer-either-when-the-countdown-ends-or-when-the-user-stops-the-gestures><em>When the user starts simultaneously panning and rotating an object, start a countdown from 3. Stop the timer either when the countdown ends or when the user stops the gestures.</em></h3><p>This is gonna be a mission critical part of the app. There’s no way you can make a mistake here.</p><p>So, as an imperative programmer, you start thinking about what do you need to keep track of in order to implement this:
 Let’s see:</p><p><em>&ldquo;user starts simultaneously panning and rotating an object&rdquo;</em> - okay, I need to store this in a variable.
 I mean, otherwise how else can I check if both of them happening at the same time?</p><p><em>“Stop the timer either when the countdown ends”</em> - means I’ll need to keep track of the timer. And also, the number of seconds left.</p><p>Etc, etc.</p><p>So, you get the idea: we’re building a kind-of data structure describing what’s exactly happening at the screen, in this specific moment, so we can compare the old state with the new state - this is how we&rsquo;re building our control-flow.
-With <em>ifs</em>.</p><p>{% highlight swift %}</p><p>var panPresent = false
+With <em>ifs</em>.</p><pre><code>var panPresent = false
 var pinchPresent = false
 var gestureTimer: NSTimer?
-var secondsLeft = 3</p><p>func handlePan(panGesture: UIPanGestureRecognizer) {
-if panGesture.state == .Began && self.panPresent == false {
-self.panPresent = true
-self.checkIfBothGesturesPresent()
-} else if panGesture.state == .Ended {
-self.panPresent = false
-self.stopTimerIfNeeded()
+var secondsLeft = 3
+
+func handlePan(panGesture: UIPanGestureRecognizer) {
+    if panGesture.state == .Began &amp;&amp; self.panPresent == false {
+        self.panPresent = true
+        self.checkIfBothGesturesPresent()
+    } else if panGesture.state == .Ended {
+        self.panPresent = false
+        self.stopTimerIfNeeded()
+    }
 }
-}</p><p>func handlePinch(pinchGesture: UIPinchGestureRecognizer) {
-if pinchGesture.state == .Began && self.pinchPresent == false {
-self.pinchPresent = true
-self.checkIfBothGesturesPresent()
-} else if pinchGesture.state == .Ended {
-self.pinchPresent = false
-self.stopTimerIfNeeded()
+
+func handlePinch(pinchGesture: UIPinchGestureRecognizer) {
+    if pinchGesture.state == .Began &amp;&amp; self.pinchPresent == false {
+        self.pinchPresent = true
+        self.checkIfBothGesturesPresent()
+    } else if pinchGesture.state == .Ended {
+        self.pinchPresent = false
+        self.stopTimerIfNeeded()
+    }
 }
-}</p><p>func checkIfBothGesturesPresent() {
-if self.pinchPresent == true && self.panPresent == true && self.gestureTimer == nil {
-self.secondsLeft = 3
-self.gestureTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: “tick:”&mldr;
-print(&ldquo;started&rdquo;)
+
+func checkIfBothGesturesPresent() {
+    if self.pinchPresent == true &amp;&amp; self.panPresent == true &amp;&amp; self.gestureTimer == nil {
+        self.secondsLeft = 3
+        self.gestureTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: “tick:”...
+        print(&quot;started&quot;)
+    }
 }
-}</p><p>func stopTimerIfNeeded() {
-if let gestureTimer = gestureTimer {
-gestureTimer.invalidate()
-self.gestureTimer = nil
-print(&ldquo;completed&rdquo;)
+
+func stopTimerIfNeeded() {
+    if let gestureTimer = gestureTimer {
+        gestureTimer.invalidate()
+        self.gestureTimer = nil
+        print(&quot;completed&quot;)
+    }
 }
-}</p><p>func tick(timer: NSTimer) {
-if self.secondsLeft &lt;= 0 {
-self.stopTimerIfNeeded()
-return
+
+func tick(timer: NSTimer) {
+    if self.secondsLeft &lt;= 0 {
+        self.stopTimerIfNeeded()
+        return
+    }
+    self.secondsLeft--
+    print(&quot;tick&quot;)
 }
-self.secondsLeft&ndash;
-print(&ldquo;tick&rdquo;)
-}
-{% endhighlight %}</p><p>So, we turned our original sentence into this:</p><p>{% highlight swift %}</p><ul><li><p>When the user touches the screen</p><ul><li>Check if a user is panning an object, store that information<ul><li>Check if both gestures are running simultaneously<ul><li>start a timer, from 3, counting down.</li></ul></li></ul></li><li>Check if the user is rotating an object, store that information<ul><li>Check if both gestures are running simultaneously<ul><li>start a timer, from 3, counting down.</li></ul></li></ul></li><li>Check if the user stopped panning<ul><li>Stop the timer if needed</li></ul></li><li>Check if the user stopped rotating<ul><li>Stop the timer if needed</li></ul></li></ul></li><li><p>When the timer ticks, decrease the number of seconds left</p><ul><li>If the number of seconds left is zero, stop the timer*</li></ul></li></ul><p>{% endhighlight %}</p><p>Ohh my god, it involves having 4 temporarily variables expressing the state of the UI!</p><p>Also, it is <em>nothing</em> like the original English sentence. The logic is buried between if statements, where we set random booleans.
-We write functions to eliminate duplicated code. And the we jump around like an inconsistent bugs bunny - there are 5 of them, all calling each other.</p><p>How can we improve upon this?</p><p>So, the question that reactive programming can help you with is:</p><h3 id=how-can-you-replace-all-those-if-instances-with-when>How can you replace all those &ldquo;if&rdquo; instances with &ldquo;when&rdquo;?</h3><p>Let&rsquo;s have a look!</p><p>{% highlight swift %}</p><p>let pan = UIPanGestureRecognizer()
-let pinch = UIPinchGestureRecognizer()</p><p>// Here, we want to create a signal that emits an event when the
-// gesture has started.</p><p>// We can call .rx_event on UIPangestureRecognizer, and
-// transform it&rsquo;s output into a signal, which then
-// We can use filter to discard all other events!</p><p>let panStarted = pan.rx_event.filter { gesture in gesture.state == .Began }</p><p>// We do the same here, but this time we&rsquo;re only interested
-// when the gestureRecognizer is in the .Ended state.</p><p>let panEnded = pan.rx_event.filter { gesture in gesture.state == .Ended }</p><p>let pinchStarted = pinch.rx_event.filter { gesture in gesture.state == .Began }
-let pinchEnded = pinch.rx_event.filter { gesture in gesture.state == .Ended }</p><p>// Okay, let&rsquo;s think. Our aim is to only trigger the timer when both
+</code></pre><p>So, we turned our original sentence into this:</p><pre><code>- When the user touches the screen
+    - Check if a user is panning an object, store that information
+        - Check if both gestures are running simultaneously
+            - start a timer, from 3, counting down.
+    - Check if the user is rotating an object, store that information
+        - Check if both gestures are running simultaneously
+            - start a timer, from 3, counting down.
+- Check if the user stopped panning
+    - Stop the timer if needed
+- Check if the user stopped rotating
+    - Stop the timer if needed
+
+- When the timer ticks, decrease the number of seconds left
+    - If the number of seconds left is zero, stop the timer
+</code></pre><p>Ohh my god, it involves having 4 temporarily variables expressing the state of the UI!</p><p>Also, it is <em>nothing</em> like the original English sentence. The logic is buried between if statements, where we set random booleans.
+We write functions to eliminate duplicated code. And the we jump around like an inconsistent bugs bunny - there are 5 of them, all calling each other.</p><p>How can we improve upon this?</p><p>So, the question that reactive programming can help you with is:</p><h3 id=how-can-you-replace-all-those-if-instances-with-when>How can you replace all those &ldquo;if&rdquo; instances with &ldquo;when&rdquo;?</h3><p>Let&rsquo;s have a look!</p><pre><code>let pan = UIPanGestureRecognizer()
+let pinch = UIPinchGestureRecognizer()
+
+// Here, we want to create a signal that emits an event when the
+// gesture has started.
+
+// We can call .rx_event on UIPangestureRecognizer, and
+// transform it's output into a signal, which then
+// We can use filter to discard all other events!
+
+let panStarted = pan.rx_event.filter { gesture in gesture.state == .Began }
+
+// We do the same here, but this time we're only interested
+// when the gestureRecognizer is in the .Ended state.
+
+let panEnded = pan.rx_event.filter { gesture in gesture.state == .Ended }
+
+let pinchStarted = pinch.rx_event.filter { gesture in gesture.state == .Began }
+let pinchEnded = pinch.rx_event.filter { gesture in gesture.state == .Ended }
+
+// Okay, let's think. Our aim is to only trigger the timer when both
 // gestures began. We originally had to keep track of these states ourselves,
 // but now that we transformed them into signals, we can also merge them, same
-// way as you&rsquo;d merge two arrays into one!
+// way as you'd merge two arrays into one!
 // Well, not exactly, we need a special combination, where the new signal will only
-// start when both of its sub-signals have emitted an event: that&rsquo;s combineLatest().</p><p>let bothGesturesStarted = Observable.combineLatest(panStarted, pinchStarted) { (_, _) -> Bool in return true }</p><p>// For gestures ended, we need merge(), since we don&rsquo;t need to wait until both of
+// start when both of its sub-signals have emitted an event: that's combineLatest().
+
+let bothGesturesStarted = Observable.combineLatest(panStarted, pinchStarted) { (_, _) -&gt; Bool in return true }
+
+// For gestures ended, we need merge(), since we don't need to wait until both of
 // them has started, we can immediately forward events from both channels into
-// the combined one.</p><p>let bothGesturesEnded = Observable.of(panEnded, pinchEnded).merge()</p><p>// Now that we have our starting point, what should we do?
+// the combined one.
+
+let bothGesturesEnded = Observable.of(panEnded, pinchEnded).merge()
+
+// Now that we have our starting point, what should we do?
 // Signals are special beasts: you can subscribe to them. Same way as
-// you&rsquo;d subscribe to a notification through NSNotificationCenter.
+// you'd subscribe to a notification through NSNotificationCenter.
 // subscribeNext will take a closure (block), and every time the signal
-// fires, it&rsquo;ll run the signal&rsquo;s emitted value through the block!</p><p>bothGesturesStarted.subscribeNext { _ in</p><p>// So, when bothGesturesStarted started, do this:
-print(&ldquo;started&rdquo;)</p><p>// Now we need to create a timer. Rx is a quite comprehensive library,
-// it has some really handy structures and extensions - one of them is
-// exactly a timer.
-// What do we want? If we don&rsquo;t want to keep track of any more state,
-// we can just create a signal that emits a number (Int), and increase it
-// on every &lsquo;tick&rsquo;.</p><p>let timer = Observable.timer(1, period: 1, scheduler: MainScheduler.instance)</p><p>// But wait, we don&rsquo;t want this timer to go on indefinitely!
-// Hmm, actually this is quite easy. Rx will also provide you operations
-// where you can limit the lifetime of a signal.
-// Same way as you&rsquo;d take only the first 3 items in the array, you can
-// use take(x) to only take the first x events (values) from a signal.</p><p>let timerThatTicksThree = timer.take(3)</p><p>// And finally, we can also combine signals in other ways: this time,
-// we need to stop the timer signal when another signal is fired.
-// Here, we just use takeUntil! It&rsquo;s like the &ldquo;while&rdquo; loop of signals.</p><p>let timerThatTicksThreeAndStops = timerThatTicksThree.takeUntil(bothGesturesEnded)</p><p>timerThatTicksThreeAndStops.subscribe(onNext: { count in
-// when a tick happens, do this:
-print(&ldquo;tick: (count)")
-}, onError: nil, onCompleted: {
-// when the timer completes, do this:
-print(&ldquo;completed&rdquo;)
-}, onDisposed: nil)
-}</p><p>{% endhighlight %}</p><p>And now, voila, all four of the temporary variables are gone!
-Also, did you notice, that the code looks like this:</p><p>{% highlight swift %}</p><p>define condition “simultaneously panning and rotating”
+// fires, it'll run the signal's emitted value through the block!
+
+bothGesturesStarted.subscribeNext { _ in
+
+    // So, when bothGesturesStarted started, do this:
+    print(&quot;started&quot;)
+
+    // Now we need to create a timer. Rx is a quite comprehensive library,
+    // it has some really handy structures and extensions - one of them is
+    // exactly a timer.
+    // What do we want? If we don't want to keep track of any more state,
+    // we can just create a signal that emits a number (Int), and increase it
+    // on every 'tick'.
+
+    let timer = Observable&lt;Int&gt;.timer(1, period: 1, scheduler: MainScheduler.instance)
+
+    // But wait, we don't want this timer to go on indefinitely!
+    // Hmm, actually this is quite easy. Rx will also provide you operations
+    // where you can limit the lifetime of a signal.
+    // Same way as you'd take only the first 3 items in the array, you can
+    // use take(x) to only take the first x events (values) from a signal.
+
+    let timerThatTicksThree = timer.take(3)
+
+    // And finally, we can also combine signals in other ways: this time,
+    // we need to stop the timer signal when another signal is fired.
+    // Here, we just use takeUntil! It's like the &quot;while&quot; loop of signals.
+
+    let timerThatTicksThreeAndStops = timerThatTicksThree.takeUntil(bothGesturesEnded)
+
+    timerThatTicksThreeAndStops.subscribe(onNext: { count in
+        // when a tick happens, do this:
+        print(&quot;tick: \(count)&quot;)
+    }, onError: nil, onCompleted: {
+        // when the timer completes, do this:
+        print(&quot;completed&quot;)
+    }, onDisposed: nil)
+}
+</code></pre><p>And now, voila, all four of the temporary variables are gone!
+Also, did you notice, that the code looks like this:</p><pre><code>define condition “simultaneously panning and rotating”
 define condition “start a countdown from 3”
 define condition “when the user stops the gestures”
-define what a timer is</p><p>now do this: “When the user starts simultaneously panning and rotating an object, start a countdown from 3.
-Stop the timer either when the countdown ends or when the user stops the gestures.”</p><p>{% endhighlight %}</p><p>You can also compress the syntax quite a bit, if you want to see how, <a href=https://github.com/itchingpixels/talks/blob/master/functional-reactive-intuition/Project/RFP/ReactiveShortViewController.swift>here&rsquo;s the link</a> to the file!</p><p>Have a look at the example project <a href=https://github.com/itchingpixels/talks/tree/master/functional-reactive-intuition/Project>here</a> and feel free to play around.</p><p>Does this makes sense? <a href=https://twitter.com/itchingpixels>Let me know</a> what you think!</p></article><footer class=book-footer><div class="flex justify-between"><div><a class="flex align-center" href=https://github.com/itchingpixels/itchingpixels.github.io/commit/b367a8fab2680f11686519bc3d5addebaed397fa title="Last modified by Mark Aron Szulyovszky | 2020 Apr 4" target=_blank rel=noopener><img src=/svg/calendar.svg class=book-icon alt=Calendar>
+define what a timer is
+
+now do this: “When the user starts simultaneously panning and rotating an object, start a countdown from 3.
+Stop the timer either when the countdown ends or when the user stops the gestures.”
+</code></pre><p>You can also compress the syntax quite a bit, if you want to see how, <a href=https://github.com/itchingpixels/talks/blob/master/functional-reactive-intuition/Project/RFP/ReactiveShortViewController.swift>here&rsquo;s the link</a> to the file!</p><p>Have a look at the example project <a href=https://github.com/itchingpixels/talks/tree/master/functional-reactive-intuition/Project>here</a> and feel free to play around.</p><p>Does this makes sense? <a href=https://twitter.com/itchingpixels>Let me know</a> what you think!</p></article><footer class=book-footer><div class="flex justify-between"><div><a class="flex align-center" href=https://github.com/itchingpixels/itchingpixels.github.io/commit/90d88c818943e8e5cda6de811d4f6401e3ca34fd title="Last modified by Mark Aron Szulyovszky | 2020 Apr 4" target=_blank rel=noopener><img src=/svg/calendar.svg class=book-icon alt=Calendar>
 <span>2020 Apr 4</span></a></div></div></footer><label for=menu-control class="hidden book-menu-overlay"></label></div></main></body></html>
