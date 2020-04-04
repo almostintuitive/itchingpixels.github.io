@@ -12,7 +12,6 @@ Or... I thought a timeline of what I've done could be a fun way to represent thi
 {{< mermaid >}}
 
 stateDiagram
-stateDiagram
   [*] --> HackingThroughoutMyTeenageYears
   HackingThroughoutMyTeenageYears --> SoundEngineering
   state fork_state
