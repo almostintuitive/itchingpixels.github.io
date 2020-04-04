@@ -4,9 +4,14 @@ baseURL: https://itchingpixels.com/
 title: Mark Aron Szulyovszky
 theme: book
 languageCode: en-US
+enableGitInfo: true
 
 params:
   # (Optional, default true) Controls table of contents visibility on right side of pages.
   # Start and end levels can be controlled with markup.tableOfContents setting.
   # You can also specify this parameter per page in front matter.
   BookToC: false
+
+  BookRepo: https://github.com/itchingpixels/itchingpixels.github.io
+  BookDateFormat: "2006 Jan 2"
+  BookComments: false
