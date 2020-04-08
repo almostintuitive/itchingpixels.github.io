@@ -1,7 +1,7 @@
 ---
 title: "Archived posts"
 bookCollapseSection: true
-weight: 100
+weight: 1000
 ---
 
 # Archived posts
