@@ -17,7 +17,7 @@ Excess returns you gain over the market.
 
 As a retail (non-institunioal) investor, your alpha (edge) sources are limited. Anything well-known is probably arbitraged away already (if it can be), by the time the info reaches you.
 
-Related note about ["the unnecessary urge to search for alpha"](../the-reasons-against-discretionary-investing)
+Related note about ["the unnecessary urge to search for alpha"](../the-reasons-against-stock-picking)
 
 
 ## Beta
@@ -34,4 +34,5 @@ Beta can manifest itself in various ways:
 - Growth (eg. buying stocks that are on a good trajectory)
 - Selling insurance (reducing someone else's exposure to volatility)
 
+You can diversify your beta (risk premium) exposure with a market-cap weighted index fund, like the S&P 500, or an Aggregate Bond fund.
 
