@@ -8,3 +8,5 @@ fields:
 - type: datetime
   name: date
   label: date
+pages:
+- content/docs/quantitative-finance/the-reasons-against-discretionary-non-systematic-investing-like-stock-picking-etc.md
