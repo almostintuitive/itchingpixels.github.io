@@ -1,6 +1,5 @@
 +++
 date = ""
-draft = true
 title = "The reasons against discretionary (non-systematic) investing (like stock picking, etc)"
 
 +++
