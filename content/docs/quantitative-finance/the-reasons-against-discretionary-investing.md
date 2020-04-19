@@ -1,8 +1,8 @@
-+++
-date = ""
-title = "The reasons against discretionary (non-systematic) investing (like stock picking, etc)"
+---
+date:   2020-04-19
+title: "The reasons against discretionary (non-systematic) investing (like stock picking, etc)"
 
-+++
+---
 # The reasons against discretionary (non-systematic) investing (like stock picking, etc)
 
 1\. As a retail investor (with fees against you, and being an outsider), you have no obvious edge over the market.
