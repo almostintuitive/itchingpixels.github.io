@@ -1,6 +1,6 @@
 ---
 date:   2020-04-19
-title: "Alpha vs beta"
+title: "Fundamentals: Alpha vs beta"
 
 ---
 # Alpha vs beta

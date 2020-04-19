@@ -1,6 +1,6 @@
 ---
 date:   2020-04-19
-title: "The reasons against stock picking"
+title: "Fundamentals: The reasons against stock picking"
 
 ---
 # The reasons against stock picking

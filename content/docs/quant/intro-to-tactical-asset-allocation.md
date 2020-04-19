@@ -1,6 +1,6 @@
 ---
 date:   2020-04-19
-title: "Intro to Tactical Asset Allocation"
+title: "Fundamentals: Intro to Tactical Asset Allocation"
 
 ---
 # Intro to Tactical Asset Allocation
@@ -32,6 +32,8 @@ Ilya Kipnis, a researcher in the field described it as such:
 > 
 > Because one is a really stupid risk to take. The other at least keeps you going.
 
+Two more things important things to add:
+By reducing the drawdowns compared to the classic 60-40 portfolio, you're opening up the possiblity of higher compounded returns (which large drawdowns are the the arch enemies of) and the option to add leverage to your portfolio, therefore potentially realise higher overall returns than market.
 
 ## What this will and will not do for you?
 
