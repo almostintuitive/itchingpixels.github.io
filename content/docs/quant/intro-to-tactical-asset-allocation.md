@@ -1,16 +1,16 @@
 ---
 date:   2020-04-19
-title: "Fundamentals: Intro to Tactical Asset Allocation"
+title: "Intro to Tactical Asset Allocation"
 
 ---
 # Intro to Tactical Asset Allocation
 
 ### Concept
-Have a semi-active portfolio that you can invest in that outperforms the 60-40 (60% Stock, 40% bond) static portfolio over the long run with a reduced maximum loss.
+Have a semi-active portfolio that you can invest in that outperforms the 60-40 (60% Stock, 40% bond) static portfolio over the long run with a reduced maximum loss, by dynamically changing the allocated percentages monthly.
 
 Investing in an index fund (eg. the S&P 500) is the “standard” passive strategy people use, but those who have done that experienced a 50% loss of their capital in the last 20 year multiple times. Depending on when you invest, your balance could be negative for 10 years. And we’re not even talking about [what happened in Japan](https://www.theguardian.com/world/2019/dec/28/how-japan-has-fared-in-30-years-since-the-stock-market-bubble-burst).
 
-The annual average returns of investing in the stock market is around 8%. But every year, you may expose yourself to losing 50% of your investment. Over a short period, you’re risking 50% to gain 8%. This is not a risk I’m personally willing to take.
+The annual average returns of investing in the stock market is around 8%. But every year, you may expose yourself to losing 50% of your investment. Over a short period, you’re risking 50% to gain 8% per year. This is not a risk I’m personally willing to take. [Volatility drag](../volatility-drag) could explain why that's not a great idea.
 
 With “Tactical Asset Allocation”, your main goal is to protect your capital from the almost catastrophic loss a recession would mean if you were invested only in the stock market.
 

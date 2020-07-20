@@ -1,6 +1,6 @@
 ---
 date:   2020-04-19
-title: "Fundamentals: The reasons against discretionary investing"
+title: "The reasons against discretionary investing"
 
 ---
 # The reasons against discretionary investing

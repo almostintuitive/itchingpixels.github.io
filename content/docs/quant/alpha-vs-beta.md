@@ -1,11 +1,10 @@
 ---
 date:   2020-04-19
-title: "Fundamentals: Alpha vs beta"
+title: "Concepts: Alpha vs Beta?"
 
 ---
 # Alpha vs beta
 
-Let's start with the definitions:
 
 ## Alpha
 Excess returns you gain over the market.
@@ -16,8 +15,9 @@ Excess returns you gain over the market.
 - Short-lived. As soon as the market finds about your edge, it'll arbitrage it away.
 
 As a retail (non-institunioal) investor, your alpha (edge) sources are limited. Anything well-known is probably arbitraged away already (if it can be), by the time the info reaches you.
+Alpha is going to a prestigious college with the smarters of your peers to all compete for the same jobs. It's the macho game, where your gains will be potentially very short-lived, and you may never know if you just delude yourself or you actually have an edge. ["Excellent analouge by Mihir A. Desai"](https://www.thecrimson.com/article/2017/5/25/desai-commencement-ed/).
 
-Related note about ["the unnecessary urge to search for alpha"](../the-reasons-against-stock-picking)
+Related note about ["the unnecessary urge to search for alpha"](../the-reasons-against-discretionary-investing)
 
 
 ## Beta
